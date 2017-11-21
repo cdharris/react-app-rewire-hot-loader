@@ -1,0 +1,23 @@
+{
+  "name": "react-app-rewire-hot-loader",
+  "version": "1.0.0",
+  "description": "Add react-hot-loader to a react-app-rewired config.",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdharris/react-app-rewire-hot-loader.git"
+  },
+  "keywords": ["webpack", "react-app-rewired"],
+  "author": "Chris Harris",
+  "license": "MIT",
+  "homepage": "https://github.com/cdharris/react-app-rewire-hot-loader",
+  "dependencies": {
+    "webpack": "^3.6.0"
+  },
+  "peerDependencies": {
+    "react-hot-loader": "^3.1.3"
+  }
+}
