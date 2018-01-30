@@ -19,12 +19,12 @@ npm install --save react-hot-loader
 1. In the `config-overrides.js` of the root of your project you created for `react-app-rewired` add this code:
 
 ```JS
-const rewireReactHotLoader = require('react-app-rewire-hot-loader');
+const rewireReactHotLoader = require('react-app-rewire-hot-loader')
 
 /* config-overrides.js */
-module.exports = function override(config, env) {
-  config = rewireReactHotLoader(config, env);
-  return config;
+module.exports = function override (config, env) {
+  config = rewireReactHotLoader(config, env)
+  return config
 }
 ```
 
@@ -53,6 +53,17 @@ render(App)
 if (module.hot) {
   module.hot.accept('./containers/App', () => { render(App) })
 }
+```
+
+3. Replace 'react-scripts' with 'react-app-rewired' in package.json
+
+```json
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject"
+  },
 ```
 
 That's it, you now have hot reloads!
