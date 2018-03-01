@@ -6,8 +6,6 @@ function rewireHotLoader(config, env) {
     return config;
   }
 
-  config.entry.splice(1, 0, 'react-hot-loader/patch');
-
   return injectBabelPlugin(['react-hot-loader/babel'], config);
 }
 
