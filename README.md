@@ -28,31 +28,17 @@ module.exports = function override (config, env) {
 }
 ```
 
-2. Follow 'step 4' from https://github.com/gaearon/react-hot-loader , replicated below:
+2. Follow 'step 2' from https://github.com/gaearon/react-hot-loader , replicated below:
 
-Wrap your application into `<AppContainer>`, all children of `<AppContainer>` will be reloaded when a change occurs.
 ```js
-// main.js
+Mark your root component as hot-exported:
+// App.js
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
-import App from './containers/App'
+import { hot } from 'react-hot-loader'
 
-const render = Component => {
-  ReactDOM.render(
-    <AppContainer>
-      <Component />
-    </AppContainer>,
-    document.getElementById('root'),
-  )
-}
+const App = () => <div>Hello World!</div>
 
-render(App)
-
-// Webpack Hot Module Replacement API
-if (module.hot) {
-  module.hot.accept('./containers/App', () => { render(App) })
-}
+export default hot(module)(App)
 ```
 
 3. Replace 'react-scripts' with 'react-app-rewired' in package.json
