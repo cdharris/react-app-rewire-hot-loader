@@ -6,7 +6,7 @@ function rewireHotLoader(config, env) {
     return config;
   }
 
-  config.module.rules[0].use[0].options.emitWarning = true;
+  config.module.rules[1].use[0].options.emitWarning = true;
   return injectBabelPlugin(['react-hot-loader/babel'], config);
 }
 
