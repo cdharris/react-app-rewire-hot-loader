@@ -15,7 +15,6 @@
   "license": "MIT",
   "homepage": "https://github.com/cdharris/react-app-rewire-hot-loader",
   "dependencies": {
-    "webpack": "^3.6.0"
   },
   "peerDependencies": {
     "react-hot-loader": "^4.0.0"
