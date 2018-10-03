@@ -6,7 +6,19 @@ function rewireHotLoader(config, env) {
     return config;
   }
 
-  config.module.rules[1].use[0].options.emitWarning = true;
+  // Find a rule which contains eslint-loader
+  const condition = u => typeof u === 'object' && u.loader && u.loader.includes('eslint-loader');
+  const rule = config.module.rules.find(rule => rule.use && rule.use.some(condition));
+
+  if (rule) {
+    const use = rule.use.find(condition);
+
+    if (use) {
+      // Inject the option for eslint-loader
+      use.options.emitWarning = true;
+    }
+  }
+
   return injectBabelPlugin(['react-hot-loader/babel'], config);
 }
 
