@@ -1,6 +1,6 @@
 {
   "name": "react-app-rewire-hot-loader",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Add react-hot-loader to a react-app-rewired config.",
   "main": "index.js",
   "files": [
