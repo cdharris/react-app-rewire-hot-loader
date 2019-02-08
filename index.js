@@ -1,5 +1,4 @@
-// Mostly inlined from 'customize-cra' https://www.npmjs.com/package/customize-cra
-// The whole library is extremely useful, but the only tool needed here is addBabelLoader.
+// Mostly inlined from within `customize-cra` https://www.npmjs.com/package/customize-cra
 const getBabelLoader = config => {
   // Filtering out rules that don't define babel plugins.
   const babelLoaderFilter = rule =>
@@ -24,7 +23,7 @@ const getBabelLoader = config => {
   return babelLoader;
 }
 
-// Curried function that uses config to search for babel loader and pushed new plugin to options list.
+// Curried function that uses config to search for babel loader and pushes new plugin to options list.
 const addBabelPlugin = plugin => config => {
   getBabelLoader(config).options.plugins.push(plugin);
   return config;
@@ -48,7 +47,7 @@ function rewireHotLoader(config, env) {
     }
   }
   
-  // If in development, add 'react-hot-loader/babel' to babel plugins
+  // If in development, add 'react-hot-loader/babel' to babel plugins.
   return addBabelPlugin('react-hot-loader/babel')(config);
 }
 
