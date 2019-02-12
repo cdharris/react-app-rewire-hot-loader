@@ -38,7 +38,7 @@ import { hot } from 'react-hot-loader'
 
 const App = () => <div>Hello World!</div>
 
-export default process.env.NODE_ENV === “development” ? hot(module)(App) : App
+export default process.env.NODE_ENV === "development" ? hot(module)(App) : App
 ```
 
 3. Replace 'react-scripts' with 'react-app-rewired' in package.json
