@@ -16,9 +16,9 @@ npm install --save react-hot-loader
 
 ## Usage
 
-1. In the `config-overrides.js` of the root of your project you created for `react-app-rewired` add this code:
+#### 1. __In the `config-overrides.js` of the root of your project you created for `react-app-rewired` add this code:__
 
-```JS
+```js
 const rewireReactHotLoader = require('react-app-rewire-hot-loader')
 
 /* config-overrides.js */
@@ -28,11 +28,23 @@ module.exports = function override (config, env) {
 }
 ```
 
-2. Follow 'step 2' from https://github.com/gaearon/react-hot-loader , replicated below:
+#### 2. __Follow 'step 2' from https://github.com/gaearon/react-hot-loader , replicated below:__
+
+Mark your root component as hot-exported:
+```js
+// App.js - react-hot-loader >= 4.5.4
+import React from 'react'
+import { hot } from 'react-hot-loader/root'
+
+const App = () => <div>Hello World!</div>
+
+export default process.env.NODE_ENV === "development" ? hot(App) : App
+```
+Prior to react-hot-loader version 4.5.4. you needed to write `hot(module)(App)`. [react-hot-loader](https://github.com/gaearon/react-hot-loader/tree/v4.7.1#getting-started) recommends to use the latest syntax as
+_"it is much more resilient to js errors you may make during development."_
 
 ```js
-Mark your root component as hot-exported:
-// App.js
+// App.js - react-hot-loader < 4.5.4
 import React from 'react'
 import { hot } from 'react-hot-loader'
 
@@ -41,7 +53,7 @@ const App = () => <div>Hello World!</div>
 export default process.env.NODE_ENV === "development" ? hot(module)(App) : App
 ```
 
-3. Replace 'react-scripts' with 'react-app-rewired' in package.json
+#### 3. __Replace 'react-scripts' with 'react-app-rewired' in package.json__
 
 ```json
   "scripts": {
