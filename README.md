@@ -16,55 +16,53 @@ npm install --save react-hot-loader
 
 ## Usage
 
-1. In the `config-overrides.js` of the root of your project you created for `react-app-rewired` add this code:
+1. __In the `config-overrides.js` of the root of your project you created for `react-app-rewired` add this code:__
 
-```JS
-const rewireReactHotLoader = require('react-app-rewire-hot-loader')
+  ```JS
+  const rewireReactHotLoader = require('react-app-rewire-hot-loader')
 
-/* config-overrides.js */
-module.exports = function override (config, env) {
-  config = rewireReactHotLoader(config, env)
-  return config
-}
-```
+  /* config-overrides.js */
+  module.exports = function override (config, env) {
+    config = rewireReactHotLoader(config, env)
+    return config
+  }
+  ```
 
-2. Follow 'step 2' from https://github.com/gaearon/react-hot-loader , replicated below:
+2. __Follow 'step 2' from https://github.com/gaearon/react-hot-loader , replicated below:__
 
-Mark your root component as hot-exported:
-```js
-// App.js - react-hot-loader >= 4.5.4
-import React from 'react'
-import { hot } from 'react-hot-loader/root'
+  Mark your root component as hot-exported:
+  ```js
+  // App.js - react-hot-loader >= 4.5.4
+  import React from 'react'
+  import { hot } from 'react-hot-loader/root'
 
-const App = () => <div>Hello World!</div>
+  const App = () => <div>Hello World!</div>
 
-export default process.env.NODE_ENV === "development" ? hot(App) : App
-```
-__Old version__: Prior to react-hot-loader version 4.5.4. you needed to write `hot(module)(App)`.
+  export default process.env.NODE_ENV === "development" ? hot(App) : App
+  ```
+  Prior to react-hot-loader version 4.5.4. you needed to write `hot(module)(App)`. [react-hot-loader](https://github.com/gaearon/react-hot-loader/tree/v4.7.1#getting-started) recommends to use the latest syntax as
+  _"it is much more resilient to js errors you may make during development."_
 
-[react-hot-loader](https://github.com/gaearon/react-hot-loader/tree/v4.7.1#getting-started) recommends to use the latest syntax as
-_"it is much more resilient to js errors you may make during development."_
+  ```js
+  // App.js - react-hot-loader < 4.5.4
+  import React from 'react'
+  import { hot } from 'react-hot-loader'
 
-```js
-// App.js - react-hot-loader < 4.5.4
-import React from 'react'
-import { hot } from 'react-hot-loader'
+  const App = () => <div>Hello World!</div>
 
-const App = () => <div>Hello World!</div>
+  export default process.env.NODE_ENV === "development" ? hot(module)(App) : App
+  ```
 
-export default process.env.NODE_ENV === "development" ? hot(module)(App) : App
-```
+3. __Replace 'react-scripts' with 'react-app-rewired' in package.json__
 
-3. Replace 'react-scripts' with 'react-app-rewired' in package.json
-
-```json
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-app-rewired eject"
-  },
-```
+  ```json
+    "scripts": {
+      "start": "react-app-rewired start",
+      "build": "react-app-rewired build",
+      "test": "react-app-rewired test --env=jsdom",
+      "eject": "react-app-rewired eject"
+    },
+  ```
 
 That's it, you now have hot reloads!
 
